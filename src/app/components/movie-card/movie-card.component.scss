@@ -1,0 +1,125 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles movie cards
+// -----------------------------------------------------------------------------
+
+@import '/src/assets/scss/abstracts/mixins',
+        '/src/assets/scss/abstracts/variables';
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: 30px;
+    overflow: hidden;
+    width: calc($max-width / 6);
+    margin-left: 10px;
+    margin-right: 10px;
+    @include transition;
+
+    @include xl {
+        width: calc($max-width / 7);
+    }
+    
+    @include lg {
+        width: calc($max-width / 6);
+    }
+
+    @include sm {
+        width: calc($max-width / 7);
+    }
+
+    @include max-width(403) {
+        width: calc($max-width / 10);
+    }
+
+    .card__rating {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        align-items: center;
+        border-radius: 7px;
+        font-size: .8rem;
+        padding: 5px 10px;
+        background-color: $mid-blue;
+        opacity: 0;
+        z-index: 3;
+        @include transition;
+        
+        @include md {
+            opacity: 1;
+        }
+        
+        i {
+            font-size: 1rem;
+            color: $primary-color;
+            margin-right: .2rem;
+        }
+    }
+
+    .card__cover {
+        position: relative;
+        display: block;
+        border-radius: 10px;
+        overflow: hidden;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $dark-blue;
+            opacity: .1;
+            z-index: 2;
+        }
+
+        img {
+            @include transition;
+        }
+    }
+
+    .card__title {
+        margin: .7rem 0;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        a {
+            @include transition;
+        }
+    }
+
+    .card__list {
+        display: flex;
+        flex-direction: row;
+
+        li {
+            margin-left: .8rem;
+            font-size: .8rem;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &:hover {
+
+        .card__rating {
+            opacity: 1;
+        }
+
+        img {
+            filter: blur(5px)
+        }
+
+        .card__title a {
+            color: $primary-color;
+        }
+    }
+
+}
