@@ -1,8 +1,15 @@
 .brand-logo {
-    height: 45px;
+    height: 35px;
     
     img {
-        max-width: 200px;
-        height: 45px;
+        max-width: 160px;
     }
+}
+
+app-movie-card {
+    margin-top: 30px;
+    overflow: hidden;
+    width: calc($max-width / 6);
+    margin-left: 10px;
+    margin-right: 10px;
 }

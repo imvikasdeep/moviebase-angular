@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IMovie } from 'src/app/interfaces/movie.model';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class MovieCardComponent {
 
-	imagePath:string = environment.IMAGE_PATH
+	@Input('movie') movie !: IMovie
+
+	POSTER_URL:string = environment.POSTER_URL+'w300'
 	
 }

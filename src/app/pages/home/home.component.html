@@ -1,17 +1,15 @@
-
-
-<div class="content">
-    <div class="heading">
-        <h1>The Trending Movies</h1>
-    </div>
-</div>
-
-<div class="cards-wrapper">
-
-    <app-movie-card></app-movie-card>
-
-</div>
-
-<div class="load__more">
-    <a href="#" class="button">Load All Movies</a>
-</div>
+<app-container-wrapper>
+    <ng-container *ngFor="let item of moviesList">
+        <ng-container *ngIf="item.movies.length">
+            <app-heading [heading]="item.type"></app-heading>
+        
+            <div class="cards-wrapper swipe">
+                
+                <ng-container *ngFor="let movie of item.movies">
+                    <app-movie-card [movie]="movie"></app-movie-card>
+                </ng-container>
+        
+            </div>
+        </ng-container>
+    </ng-container>
+</app-container-wrapper>
