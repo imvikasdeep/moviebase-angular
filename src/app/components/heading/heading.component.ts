@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class HeadingComponent {
 
 	@Input('heading') heading:string = ''
+	@Input('isHomePage') isHomePage:boolean = false
 
 }

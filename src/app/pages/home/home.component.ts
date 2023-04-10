@@ -34,18 +34,13 @@ export class HomeComponent {
 
 	ngOnInit():void {
 
-		this._movieService.getTrendingMovies(this.params).subscribe(res => {
-			
-			this.moviesList[0].movies = res.results.slice(0, 5)	
-			
-		})
-		
-		this._movieService.getUpcomingMovies(this.params).subscribe(res => {
-			
-			console.log(res);
-			
-			// this.moviesList[0].movies = res.results.slice(0, 5)	
-			
+		this.moviesList.forEach((item, index) => {
+
+			this._movieService.getMovies(item.type, this.params).subscribe(res => {
+				
+				this.moviesList[index].movies = res.results.slice(0, 7)	
+				
+			})
 		})
 		
 	}

@@ -13,6 +13,10 @@
         justify-content: space-between;
         align-items: center;
 
+        @include md {
+            margin-top: 1.5rem;
+        }
+
         a {
             display: flex;
             border: 1px solid;

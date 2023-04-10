@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles Person List
+// -----------------------------------------------------------------------------
+
+
+@import '/src/assets/scss/abstracts/mixins',
+        '/src/assets/scss/abstracts/variables';
+
+.person-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.person {
+    text-align: center;
+    flex-shrink: 0;
+    width: 180px;
+    box-shadow: 0 0 10px -1px darken($mid-blue, 9%);
+    margin: 1rem .5rem;
+    border-radius: 10px;
+
+    &:first-child {
+        margin-left: 5px;
+    }
+}

@@ -13,31 +13,45 @@ import { DatePipe } from '@angular/common';
 import { HeadingComponent } from './components/heading/heading.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ContainerWrapperComponent } from './components/container-wrapper/container-wrapper.component';
+import { TrendingComponent } from './pages/trending/trending.component';
+import { TopRatedComponent } from './pages/top-rated/top-rated.component';
+import { UpcomingComponent } from './pages/upcoming/upcoming.component';
+import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { PersonCardComponent } from './components/person-card/person-card.component';
+import { PersonListComponent } from './components/person-list/person-list.component';
+import { PersonDetailComponent } from './pages/person-detail/person-detail.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HeaderComponent,
-		FooterComponent,
-		HomeComponent,
-		MovieCardComponent,
-  HeadingComponent,
-  NotFoundComponent,
-  ContainerWrapperComponent
-	],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule,
-	],
-	providers: [
-		DatePipe,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: InterceptorService,
-			multi: true
-		}
-	],
-	bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        MovieCardComponent,
+        HeadingComponent,
+        NotFoundComponent,
+        ContainerWrapperComponent,
+        TrendingComponent,
+        TopRatedComponent,
+        UpcomingComponent,
+        MovieDetailComponent,
+        PersonCardComponent,
+        PersonListComponent,
+        PersonDetailComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+    ],
+    providers: [
+        DatePipe,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterceptorService,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

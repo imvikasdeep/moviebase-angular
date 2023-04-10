@@ -3,8 +3,9 @@ import { HttpClient, HttpErrorResponse } from  '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
-import { IMovie } from '../interfaces/movie.model';
+import { IMovieDetail, IMovieList } from '../interfaces/movie.model';
 import { DatePipe } from '@angular/common';
+import { IPerson } from '../interfaces/cast.model';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,15 +13,33 @@ import { DatePipe } from '@angular/common';
 
 export class MoviesService {
 
-	API_URL = environment.API_BASE_URL
+	API_URL:String = environment.API_BASE_URL;
+    IMAGE_PATH:string = environment.IMAGE_PATH;
+    POSTER_URL:String = environment.POSTER_URL;
+    PROFILE_IMAGE_PATH:String = environment.PROFILE_IMAGE_PATH;
+
+    toHoursAndMinutes(totalMinutes:number) {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return { hours, minutes };
+      }
 
 	constructor(
 		private http: HttpClient,
 		private datePipe:DatePipe
 	) { }
 
-	getTrendingMovies(params:any): Observable<{results: IMovie[]; total_pages: number; total_results: number}> {
-		return this.http.get<{results: IMovie[]; total_pages: number; total_results: number}>(`${this.API_URL}trending/movie/week`, {params: params}).pipe(map((response:{results: IMovie[]; total_pages: number; total_results: number}) => {
+	getMovies(movie_category:string, params:any): Observable<IMovieList> {
+
+		let API_URL = `${this.API_URL}trending/movie/week`;
+		
+		if(movie_category == 'upcoming')
+			API_URL = `${this.API_URL}movie/upcoming`;
+
+		if(movie_category == 'top-rated')
+			API_URL = `${this.API_URL}movie/top_rated`;
+
+		return this.http.get<IMovieList>(API_URL, {params: params}).pipe(map((response:IMovieList) => {
 			
 			response.results.forEach(ele => {
 				ele.release_year = this.datePipe.transform(ele.release_date, 'YYYY') ?? '';
@@ -29,17 +48,59 @@ export class MoviesService {
 			return response;
 		}), retry(2),catchError(this.handleError))
 	}
-	
-	getUpcomingMovies(params:any): Observable<{results: IMovie[]}> {
-		return this.http.get<{results: IMovie[]}>(`${this.API_URL}movie/upcoming`, {params: params}).pipe(map((response:{results: IMovie[]}) => {
-			
-			response.results.forEach(ele => {
+
+    getMovieDetails(id:number): Observable<IMovieDetail> {
+        return this.http.get<IMovieDetail>(`${this.API_URL}movie/${id}`).pipe(map((response:IMovieDetail) => {
+
+            response.backdrop_path = `${this.POSTER_URL}original/${response.backdrop_path}`;
+            response.release_year = this.datePipe.transform(response.release_date, 'YYYY') ?? '';
+            
+            let screen_time = this.toHoursAndMinutes(response.runtime);
+
+            response.runtime_hours = screen_time.hours
+            response.runtime_minutes = screen_time.minutes
+
+            return response
+        }),retry(2), catchError(this.handleError))
+    }
+
+    getSimilarMovies(id:number): Observable<IMovieList> {
+        return this.http.get<IMovieList>(`${this.API_URL}movie/${id}/similar`).pipe(map((response:IMovieList) => {
+
+            response.results.forEach(ele => {
 				ele.release_year = this.datePipe.transform(ele.release_date, 'YYYY') ?? '';
 			})
 
-			return response;
-		}), retry(2),catchError(this.handleError))
-	}
+            return response
+        }),retry(2), catchError(this.handleError))
+    }
+    
+    getMovieCast(id:number): Observable<{cast: IPerson[]}> {
+        return this.http.get<{cast: IPerson[]}>(`${this.API_URL}movie/${id}/credits`).pipe(map((response:{cast: IPerson[]}) => {
+
+            response.cast.forEach(ele => {
+
+                if(ele.gender === 1)
+                    ele.gender_type = 'female';
+
+                if(ele.gender === 2)
+                    ele.gender_type = 'male';
+
+                if(!ele.profile_path) {
+                    
+                    ele.profile_path = `${this.IMAGE_PATH}profile-placeholder-female.jpg`;
+
+                    if(ele.gender === 2)
+                        ele.profile_path = `${this.IMAGE_PATH}profile-placeholder-male.jpg`;
+                    
+                } else {
+                    ele.profile_path = `${this.PROFILE_IMAGE_PATH}w138_and_h175_face${ele.profile_path}`;
+                }
+            })
+
+            return response;
+        }), retry(2), catchError(this.handleError));
+    }
 
 	private handleError(error: HttpErrorResponse) {
 		if (error.status === 0) {

@@ -1,0 +1,9 @@
+<app-container-wrapper>
+
+    <app-heading [heading]="'top rated'"></app-heading>
+
+    <div class="cards-wrapper">
+        <app-movie-card [movie]="movie" *ngFor="let movie of movieList"></app-movie-card>
+    </div>
+
+</app-container-wrapper>

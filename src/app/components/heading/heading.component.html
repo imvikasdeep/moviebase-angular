@@ -1,7 +1,7 @@
 <div class="content">
     <div class="heading">
         <h1>{{heading}}</h1>
-        <a [routerLink]="'/'+heading">
+        <a [routerLink]="'/'+heading" *ngIf="isHomePage">
             <span>View All</span> <i class="material-icons-outlined">arrow_forward</i>
         </a>
     </div>
