@@ -4,7 +4,7 @@
         {{movie.vote_average.toFixed(1)}}
     </span>
     <a [routerLink]="'/movie/'+movie.id" class="card__cover">
-        <img [src]="POSTER_URL + movie.poster_path" class="img-responsive" alt="Interstellar">
+        <img [src]="movie.poster_path" class="img-responsive" alt="Interstellar">
     </a>
     <h2 class="card__title">
         <a [routerLink]="'/movie/'+movie.id" [title]="movie.original_title">{{movie.original_title}}</a>

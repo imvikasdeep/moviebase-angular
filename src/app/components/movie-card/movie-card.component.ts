@@ -15,6 +15,5 @@ export class MovieCardComponent {
 
 	@Input('movie') movie !: IMovie
 
-	POSTER_URL:string = environment.POSTER_URL+'w300'
 	
 }

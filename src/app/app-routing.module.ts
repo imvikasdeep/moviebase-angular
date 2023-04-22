@@ -11,7 +11,7 @@ import { UpcomingComponent } from './pages/upcoming/upcoming.component';
 const routes: Routes = [
     
     {path: 'movie/:id', component: MovieDetailComponent},
-
+    
     {path: 'person/:id', component: PersonDetailComponent},
 
 	{ path: 'trending', component: TrendingComponent },

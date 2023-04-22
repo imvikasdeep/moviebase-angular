@@ -43,6 +43,10 @@ export class MoviesService {
 			
 			response.results.forEach(ele => {
 				ele.release_year = this.datePipe.transform(ele.release_date, 'YYYY') ?? '';
+                
+                if(!ele.poster_path) {
+                    ele.poster_path = `${this.IMAGE_PATH}image-not-found.jpg`;
+                }
 			})
 
 			return response;
@@ -52,7 +56,11 @@ export class MoviesService {
     getMovieDetails(id:number): Observable<IMovieDetail> {
         return this.http.get<IMovieDetail>(`${this.API_URL}movie/${id}`).pipe(map((response:IMovieDetail) => {
 
-            response.backdrop_path = `${this.POSTER_URL}original/${response.backdrop_path}`;
+            if(response.backdrop_path) {
+                response.backdrop_path = `${this.POSTER_URL}original/${response.backdrop_path}`;
+            } else {
+                response.backdrop_path = `${this.IMAGE_PATH}image-not-found.jpg`;
+            }
             response.release_year = this.datePipe.transform(response.release_date, 'YYYY') ?? '';
             
             let screen_time = this.toHoursAndMinutes(response.runtime);
@@ -69,6 +77,12 @@ export class MoviesService {
 
             response.results.forEach(ele => {
 				ele.release_year = this.datePipe.transform(ele.release_date, 'YYYY') ?? '';
+                
+                if(!ele.poster_path) {
+                    ele.poster_path = `${this.IMAGE_PATH}image-not-found.jpg`;
+                } else {
+                    ele.poster_path = `${this.POSTER_URL}w300/${ele.poster_path}`;
+                }
 			})
 
             return response

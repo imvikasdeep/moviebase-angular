@@ -28,18 +28,18 @@ export class MovieDetailComponent {
 
         this.activatedRoute.params.subscribe((params) => {
             this.movieId = params["id"];
-        })
             
-        this._movieService.getMovieDetails(this.movieId).subscribe(res => {
-            this.movie = res;
-        })
+            this._movieService.getMovieDetails(this.movieId).subscribe(res => {
+                this.movie = res;
+            })
         
-        this._movieService.getSimilarMovies(this.movieId).subscribe(res => {
-            this.similarMovies = res.results.slice(0, 7);
-        })
-
-        this._movieService.getMovieCast(this.movieId).subscribe(res => {
-            this.casts = res.cast;
+            this._movieService.getSimilarMovies(this.movieId).subscribe(res => {
+                this.similarMovies = res.results.slice(0, 7);
+            })
+    
+            this._movieService.getMovieCast(this.movieId).subscribe(res => {
+                this.casts = res.cast;
+            })
         })
         
     }
