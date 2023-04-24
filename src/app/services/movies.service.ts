@@ -46,6 +46,8 @@ export class MoviesService {
                 
                 if(!ele.poster_path) {
                     ele.poster_path = `${this.IMAGE_PATH}image-not-found.jpg`;
+                } else {
+                    ele.poster_path = `${this.POSTER_URL}w300/${ele.poster_path}`;
                 }
 			})
 
