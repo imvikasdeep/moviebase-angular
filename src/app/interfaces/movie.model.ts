@@ -44,3 +44,9 @@ export interface IMovieDetail {
     vote_average: number;
     release_year: string;
 }
+
+export interface IGenre {
+    id: number;
+    name: string;
+    slug?: string;
+}

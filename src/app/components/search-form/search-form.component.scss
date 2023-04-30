@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the search form of the site/application.
+// -----------------------------------------------------------------------------
+
+@import '/src/assets/scss/abstracts/mixins',
+'/src/assets/scss/abstracts/variables';
+
+.searchform {
+
+    @include md {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    @include rwd(768) {
+        margin-left: 20px
+    }
+
+    .search__group {
+        position: relative;
+        border-radius: 40px;
+        padding: 5px 20px;
+        height: 40px;
+        border: 1px solid $light-grey;
+
+        .search__input {
+            background: transparent;
+            color: $light-grey;
+            border: none;
+            height: 28px;
+            width: 100%;
+            padding-right: 30px;
+
+            @include on-event {
+                border: none;
+                outline: none;
+            }
+        }
+
+        button {
+            position: absolute;
+            background: transparent;
+            border: none;
+            height: 30px;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-45%);
+            color: $light-grey;
+            cursor: pointer;
+        }
+    }
+}

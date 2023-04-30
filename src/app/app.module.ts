@@ -20,6 +20,10 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 import { PersonCardComponent } from './components/person-card/person-card.component';
 import { PersonListComponent } from './components/person-list/person-list.component';
 import { PersonDetailComponent } from './pages/person-detail/person-detail.component';
+import { GenereListComponent } from './components/genere-list/genere-list.component';
+import { GenreComponent } from './pages/genre/genre.component';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +42,10 @@ import { PersonDetailComponent } from './pages/person-detail/person-detail.compo
         PersonCardComponent,
         PersonListComponent,
         PersonDetailComponent,
+        GenereListComponent,
+        GenreComponent,
+        SearchResultComponent,
+        SearchFormComponent,
     ],
     imports: [
         BrowserModule,
