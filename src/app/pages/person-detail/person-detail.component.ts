@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IPersonDetail } from 'src/app/interfaces/cast.model';
 import { PersonService } from 'src/app/services/person.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { PersonService } from 'src/app/services/person.service';
 })
 export class PersonDetailComponent {
 
-    personId!: number
+    personId!: number;
+    person!: IPersonDetail;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -18,15 +20,16 @@ export class PersonDetailComponent {
 
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
 
         this.activatedRoute.params.subscribe((params) => {
             this.personId = params["id"];
-        })
 
-        this._personService.getPersonDetail(this.personId).subscribe(res => {
-            console.log(res);
-            
+            this._personService.getPersonDetail(this.personId).subscribe(res => {
+                this.person = res;
+                console.log(res);
+                
+            })
         })
 
     }

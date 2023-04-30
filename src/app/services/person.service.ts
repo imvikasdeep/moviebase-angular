@@ -21,7 +21,21 @@ export class PersonService {
 	) { }
 
     getPersonDetail(id:number): Observable<IPersonDetail> {
-        return this.http.get<IPersonDetail>(`${this.API_URL}person/${id}`).pipe(retry(2), catchError(this.handleError))
+        return this.http.get<IPersonDetail>(`${this.API_URL}person/${id}`).pipe(map((response:IPersonDetail) => {
+
+            if(!response.profile_path) {
+                    
+                response.profile_path = `${this.IMAGE_PATH}profile-placeholder-female.jpg`;
+
+                if(response.gender === 2)
+                    response.profile_path = `${this.IMAGE_PATH}profile-placeholder-male.jpg`;
+                
+            } else {
+                response.profile_path = `${this.PROFILE_IMAGE_PATH}w138_and_h175_face${response.profile_path}`;
+            }
+
+			return response;
+		}), retry(2),catchError(this.handleError))
     }
 
     private handleError(error: HttpErrorResponse) {

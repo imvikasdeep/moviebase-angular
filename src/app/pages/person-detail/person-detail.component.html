@@ -1,1 +1,14 @@
-<p>person-detail works!</p>
+<app-container-wrapper>
+    <div class="personDetails" *ngIf="person">
+        <div class="_overview">
+            <div class="__img"><img class="img-responsive" [src]="person.profile_path" [alt]="person.name" [title]="person.name"></div>
+        </div>
+        <div class="_summary">
+            <h1>{{person.name}}</h1>
+            <div *ngIf="person.biography">
+                <h2>Biography</h2>
+                <p>{{person.biography}}</p>
+            </div>
+        </div>
+    </div>
+</app-container-wrapper>
