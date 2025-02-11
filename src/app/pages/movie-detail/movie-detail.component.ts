@@ -5,9 +5,10 @@ import { IMovie, IMovieDetail } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.scss']
+    selector: 'app-movie-detail',
+    templateUrl: './movie-detail.component.html',
+    styleUrls: ['./movie-detail.component.scss'],
+    standalone: false
 })
 export class MovieDetailComponent {
     

@@ -6,7 +6,8 @@ import { PersonService } from 'src/app/services/person.service';
 @Component({
     selector: 'app-person-detail',
     templateUrl: './person-detail.component.html',
-    styleUrls: ['./person-detail.component.scss']
+    styleUrls: ['./person-detail.component.scss'],
+    standalone: false
 })
 export class PersonDetailComponent {
 

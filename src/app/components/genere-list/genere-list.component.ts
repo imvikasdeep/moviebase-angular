@@ -5,7 +5,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 @Component({
     selector: 'app-genere-list',
     templateUrl: './genere-list.component.html',
-    styleUrls: ['./genere-list.component.scss']
+    styleUrls: ['./genere-list.component.scss'],
+    standalone: false
 })
 export class GenereListComponent {
     

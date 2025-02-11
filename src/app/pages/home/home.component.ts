@@ -3,9 +3,10 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-	selector: 'app-home',
-	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent {
 

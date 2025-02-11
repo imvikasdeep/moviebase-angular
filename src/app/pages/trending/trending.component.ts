@@ -3,9 +3,10 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-	selector: 'app-trending',
-	templateUrl: './trending.component.html',
-	styleUrls: ['./trending.component.scss']
+    selector: 'app-trending',
+    templateUrl: './trending.component.html',
+    styleUrls: ['./trending.component.scss'],
+    standalone: false
 })
 export class TrendingComponent {
 

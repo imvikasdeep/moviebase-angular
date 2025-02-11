@@ -3,9 +3,10 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-  selector: 'app-top-rated',
-  templateUrl: './top-rated.component.html',
-  styleUrls: ['./top-rated.component.scss']
+    selector: 'app-top-rated',
+    templateUrl: './top-rated.component.html',
+    styleUrls: ['./top-rated.component.scss'],
+    standalone: false
 })
 export class TopRatedComponent {
   movieList!: IMovie[];

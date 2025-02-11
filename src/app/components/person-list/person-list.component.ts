@@ -4,7 +4,8 @@ import { IPerson } from 'src/app/interfaces/cast.model';
 @Component({
     selector: 'app-person-list',
     templateUrl: './person-list.component.html',
-    styleUrls: ['./person-list.component.scss']
+    styleUrls: ['./person-list.component.scss'],
+    standalone: false
 })
 export class PersonListComponent {
 

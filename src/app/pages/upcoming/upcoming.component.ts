@@ -3,9 +3,10 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
-	selector: 'app-upcoming',
-	templateUrl: './upcoming.component.html',
-	styleUrls: ['./upcoming.component.scss']
+    selector: 'app-upcoming',
+    templateUrl: './upcoming.component.html',
+    styleUrls: ['./upcoming.component.scss'],
+    standalone: false
 })
 export class UpcomingComponent {
 
