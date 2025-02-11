@@ -7,7 +7,7 @@ import { HeaderComponent } from './shared/layouts/header/header.component';
 import { FooterComponent } from './shared/layouts/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor.service';
 import { DatePipe } from '@angular/common';
 import { HeadingComponent } from './components/heading/heading.component';
@@ -25,8 +25,7 @@ import { GenreComponent } from './pages/genre/genre.component';
 import { SearchResultComponent } from './pages/search-result/search-result.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         HeaderComponent,
         FooterComponent,
@@ -47,19 +46,14 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
         SearchResultComponent,
         SearchFormComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-    ],
-    providers: [
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule], providers: [
         DatePipe,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterceptorService,
             multi: true
-        }
-    ],
-    bootstrap: [AppComponent]
-})
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
