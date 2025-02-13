@@ -1,9 +1,11 @@
 <app-container-wrapper>
 
-    <app-heading [heading]="'trending'"></app-heading>
+  <app-heading [heading]="'trending'"></app-heading>
 
-    <div class="cards-wrapper">
-        <app-movie-card [movie]="movie" *ngFor="let movie of movieList"></app-movie-card>
-    </div>
+  <div class="cards-wrapper">
+    @for (movie of movieList; track movie) {
+      <app-movie-card [movie]="movie"></app-movie-card>
+    }
+  </div>
 
 </app-container-wrapper>

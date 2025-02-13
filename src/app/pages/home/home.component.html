@@ -1,13 +1,12 @@
-<app-container-wrapper *ngFor="let item of moviesList">
-
-    <ng-container *ngIf="item.movies.length">
-        
-        <app-heading [heading]="item.type" [isHomePage]="true"></app-heading>
-
-        <div class="cards-wrapper swipe">
-            <app-movie-card [movie]="movie" *ngFor="let movie of item.movies"></app-movie-card>
-        </div>
-
-    </ng-container>
-
+@for (item of moviesList; track item) {
+<app-container-wrapper>
+    @if (item.movies.length) {
+    <app-heading [heading]="item.type" [isHomePage]="true"></app-heading>
+    <div class="cards-wrapper swipe">
+        @for (movie of item.movies; track movie) {
+        <app-movie-card [movie]="movie"></app-movie-card>
+        }
+    </div>
+    }
 </app-container-wrapper>
+}

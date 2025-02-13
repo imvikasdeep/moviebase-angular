@@ -4,14 +4,14 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ContainerWrapperComponent } from '../../components/container-wrapper/container-wrapper.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
-import { NgFor } from '@angular/common';
+
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 
 @Component({
     selector: 'app-genre',
     templateUrl: './genre.component.html',
     styleUrls: ['./genre.component.scss'],
-    imports: [ContainerWrapperComponent, HeadingComponent, NgFor, MovieCardComponent]
+    imports: [ContainerWrapperComponent, HeadingComponent, MovieCardComponent]
 })
 export class GenreComponent {
 

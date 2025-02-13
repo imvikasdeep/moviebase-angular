@@ -1,3 +1,5 @@
-<li *ngFor="let genere of generes">
+@for (genere of generes; track genere) {
+  <li>
     <a [href]="'/genre/'+genere.id+'/'+genere.slug">{{genere.name}}</a>
-</li>
+  </li>
+}

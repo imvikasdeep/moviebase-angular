@@ -1,5 +1,7 @@
 <div class="person-wrapper custom-slim-scroll">
-    
-    <app-person-card [person]="person" *ngFor="let person of personList"></app-person-card>
+
+  @for (person of personList; track person) {
+    <app-person-card [person]="person"></app-person-card>
+  }
 
 </div>
