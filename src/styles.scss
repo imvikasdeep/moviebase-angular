@@ -19,3 +19,9 @@
 	'./assets/scss/base/typography',
 	'./assets/scss/base/helpers',
 	'./assets/scss/base/common';
+
+	// 5. Components
+@import
+	'./assets/scss/components/button',
+	'./assets/scss/components/slimScroll',
+	'./assets/scss/components/pagination';

@@ -1,0 +1,44 @@
+@if (movie) {
+  <main class="moviedetails">
+    <div class="container">
+      <section class="poster" style="background-image: url('{{movie.backdrop_path}}');"></section>
+      <section class="content">
+        <div class="play">
+          <a href="#"><i class="material-icons-outlined">play_circle_outline</i></a>
+        </div>
+        <div class="heading">
+          <h1>{{movie.original_title}}</h1>
+        </div>
+        <ul class="detail-list">
+          <li><i class="material-icons-outlined">star</i> {{movie.vote_average.toFixed(1)}}</li>
+          <li><i class="material-icons-outlined">bolt</i> @for (genre of movie.genres; track genre) {
+          <span>{{genre.name}} &nbsp;&nbsp; </span>
+        }</li>
+        <li><i class="material-icons-outlined">event</i> {{movie.release_year}}</li>
+        <li><i class="material-icons-outlined">schedule</i> {{movie.runtime_hours}}h  {{movie.runtime_minutes}}min</li>
+        @if (movie.adult) {
+          <li><i class="material-icons-outlined">perm_identity</i> 18+</li>
+        }
+      </ul>
+      <div class="movie__desc">
+        {{movie.overview}}
+      </div>
+    </section>
+  </div>
+</main>
+}
+
+<app-container-wrapper>
+  @if (casts && casts.length) {
+    <app-heading [heading]="'Top Cast'"></app-heading>
+    <app-person-list [personList]="casts"></app-person-list>
+  }
+  @if (similarMovies && similarMovies.length) {
+    <app-heading [heading]="'You May Also Like'"></app-heading>
+    <div class="cards-wrapper swipe">
+      @for (movie of similarMovies; track movie) {
+        <app-movie-card [movie]="movie"></app-movie-card>
+      }
+    </div>
+  }
+</app-container-wrapper>

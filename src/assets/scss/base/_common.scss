@@ -1,8 +1,66 @@
 .brand-logo {
-    height: 45px;
+    height: 35px;
     
     img {
-        max-width: 200px;
-        height: 45px;
+        max-width: 160px;
     }
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+
+    app-movie-card {
+        flex-grow: 1;
+
+        .card {
+            width: 100%;
+        }
+    }
+
+    &.swipe {
+
+        .card {
+            width: 145px;
+        }
+    }
+
+    @include xl {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        
+        .card {
+            flex-shrink: 0;
+        }
+    }
+
+    @include md {
+        &.swipe {
+
+            .card {
+                width: ($max-width / 12);
+
+                .card__rating {
+                    right: 5px;
+                    top: 5px;
+                    border-radius: 5px;
+                    font-size: .6rem;
+                    padding: 3px 5px;
+
+                    i {
+                        font-size: .8rem;
+                    }
+                }
+
+                .card__title {
+                    font-size: .8rem;
+                    white-space: break-spaces;
+                    margin-bottom: .4rem;
+                    line-height: 1.2;
+                }
+            }
+        }
+   }
+
 }

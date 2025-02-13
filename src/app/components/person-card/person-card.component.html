@@ -1,0 +1,9 @@
+<a routerLink='/person/{{person.id}}'>
+    <div class="__img">
+        <img [src]="person.profile_path" width="300" height="225" [alt]="person.original_name" [title]="person.original_name" />
+    </div>
+    <div class="__name">
+        <p class="__original">{{person.original_name}}</p>
+        <p class="__character">{{person.character}}</p>
+    </div>
+</a>
