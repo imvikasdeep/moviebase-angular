@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
+import { ContainerWrapperComponent } from '../../components/container-wrapper/container-wrapper.component';
+import { HeadingComponent } from '../../components/heading/heading.component';
+import { NgFor } from '@angular/common';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 
 @Component({
     selector: 'app-upcoming',
     templateUrl: './upcoming.component.html',
     styleUrls: ['./upcoming.component.scss'],
-    standalone: false
+    imports: [ContainerWrapperComponent, HeadingComponent, NgFor, MovieCardComponent]
 })
 export class UpcomingComponent {
 

@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPersonDetail } from 'src/app/interfaces/cast.model';
 import { PersonService } from 'src/app/services/person.service';
+import { ContainerWrapperComponent } from '../../components/container-wrapper/container-wrapper.component';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-person-detail',
     templateUrl: './person-detail.component.html',
     styleUrls: ['./person-detail.component.scss'],
-    standalone: false
+    imports: [ContainerWrapperComponent, NgIf]
 })
 export class PersonDetailComponent {
 

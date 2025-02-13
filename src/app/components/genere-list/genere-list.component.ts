@@ -1,12 +1,13 @@
 import { Component, HostBinding } from '@angular/core';
 import { IGenre } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
+import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-genere-list',
     templateUrl: './genere-list.component.html',
     styleUrls: ['./genere-list.component.scss'],
-    standalone: false
+    imports: [NgFor]
 })
 export class GenereListComponent {
     

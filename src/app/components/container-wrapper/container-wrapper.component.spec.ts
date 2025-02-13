@@ -8,8 +8,8 @@ describe('ContainerWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContainerWrapperComponent ]
-    })
+    imports: [ContainerWrapperComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ContainerWrapperComponent);
