@@ -12,6 +12,25 @@ import { SearchFormComponent } from '../../../components/search-form/search-form
 })
 export class HeaderComponent {
 
-	imagePath:string = environment.IMAGE_PATH
+    imagePath: string = environment.IMAGE_PATH;
+    currentTheme: Themes = Themes.Dark;
+    themeIcon: string = '';
 
+    ngOnInit(): void {
+        this.toggleTheme(Themes.Dark);
+    }
+
+    toggleTheme(theme?: Themes) {
+        this.currentTheme = this.currentTheme === Themes.Light ? Themes.Dark : Themes.Light;
+        if (theme)
+            this.currentTheme = theme
+        document.body.className = this.currentTheme;
+        this.themeIcon = this.currentTheme === Themes.Light ? 'dark_mode' : 'light_mode';
+    }
+
+}
+
+export enum Themes {
+    Dark = 'dark',
+    Light = 'light'
 }

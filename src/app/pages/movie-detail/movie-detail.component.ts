@@ -16,11 +16,11 @@ import { MovieCardComponent } from '../../components/movie-card/movie-card.compo
     imports: [ContainerWrapperComponent, HeadingComponent, PersonListComponent, MovieCardComponent]
 })
 export class MovieDetailComponent {
-    
-    movie!:IMovieDetail;
-    similarMovies:IMovie[] = [];
-    casts:IPerson[] = [];
-    movieId:number = 0
+
+    movie!: IMovieDetail;
+    similarMovies: IMovie[] = [];
+    casts: IPerson[] = [];
+    movieId: number = 0
 
 
     constructor(
@@ -30,23 +30,23 @@ export class MovieDetailComponent {
 
     }
 
-    ngOnInit():void {
+    ngOnInit(): void {
 
         this.activatedRoute.params.subscribe((params) => {
             this.movieId = params["id"];
-            
+
             this._movieService.getMovieDetails(this.movieId).subscribe(res => {
                 this.movie = res;
             })
-        
+
             this._movieService.getSimilarMovies(this.movieId).subscribe(res => {
                 this.similarMovies = res.results.slice(0, 7);
             })
-    
+
             this._movieService.getMovieCast(this.movieId).subscribe(res => {
                 this.casts = res.cast;
             })
         })
-        
+
     }
 }

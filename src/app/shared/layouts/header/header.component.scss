@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 @import '/src/assets/scss/abstracts/mixins',
-        '/src/assets/scss/abstracts/variables';
+'/src/assets/scss/abstracts/variables';
 
 .header {
     position: fixed;
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     @include md {
         padding: 1rem 0 .8rem;
     }
@@ -40,7 +40,7 @@
             background: $white-color;
             transform-origin: 0% 50%;
             @include transition;
-            
+
             &.bar-2 {
                 width: 13px;
             }
@@ -48,7 +48,7 @@
     }
 
 
-    
+
     .navbar-nav {
         display: flex;
         align-items: center;
@@ -67,7 +67,7 @@
             z-index: 9998;
             @include transition
         }
-        
+
         ul {
             display: flex;
 
@@ -75,13 +75,13 @@
                 flex-direction: column;
                 width: 100%;
             }
-        
+
             li {
                 position: relative;
 
                 &.dropdown {
 
-                    & > a {
+                    &>a {
                         position: relative;
                         line-height: 70px;
 
@@ -91,14 +91,15 @@
                         }
                     }
 
-                    &:focus, &:hover {
+                    &:focus,
+                    &:hover {
 
-                        & > a ~ .submenu {
+                        &>a~.submenu {
                             display: block;
                         }
                     }
                 }
-        
+
                 a {
                     display: flex;
                     align-items: center;
@@ -124,11 +125,17 @@
 
                     @include md {
                         position: relative;
-                        height: 50vh;        
+                        height: 50vh;
                         overflow-y: scroll;
                     }
                 }
             }
+        }
+
+        .theme-setting {
+            margin-left: 1rem;
+            display: flex;
+            cursor: pointer;
         }
     }
 
@@ -139,8 +146,8 @@
             top: 73px;
             transform: translateY(0);
         }
-        
-        .nav-burger { 
+
+        .nav-burger {
 
             .bar-1 {
                 transform: rotate(40deg);
@@ -149,7 +156,7 @@
             .bar-2 {
                 opacity: 0;
             }
-            
+
             .bar-3 {
                 transform: rotate(-40deg);
             }
