@@ -43,7 +43,7 @@ export class HomeComponent {
 
             this._movieService.getMovies(item.type, this.params).subscribe(res => {
 
-                this.moviesList[index].movies = res.results.slice(0, 7)
+                this.moviesList[index].movies = res.results.slice(0, 5)
 
             })
         })

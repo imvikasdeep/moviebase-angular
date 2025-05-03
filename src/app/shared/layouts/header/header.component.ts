@@ -13,19 +13,31 @@ import { SearchFormComponent } from '../../../components/search-form/search-form
 export class HeaderComponent {
 
     imagePath: string = environment.IMAGE_PATH;
-    currentTheme: Themes = Themes.Dark;
-    themeIcon: string = '';
+    isDarkTheme: boolean = true;
+    themeIcon: string = 'light_mode';
 
     ngOnInit(): void {
-        this.toggleTheme(Themes.Dark);
+        this.isDarkTheme = this.getTheme() === 'dark' ? true : false;
+        this.setIcon();
     }
 
-    toggleTheme(theme?: Themes) {
-        this.currentTheme = this.currentTheme === Themes.Light ? Themes.Dark : Themes.Light;
-        if (theme)
-            this.currentTheme = theme
-        document.body.className = this.currentTheme;
-        this.themeIcon = this.currentTheme === Themes.Light ? 'dark_mode' : 'light_mode';
+    toggleTheme() {
+        this.isDarkTheme = !this.isDarkTheme
+        document.body.className = this.isDarkTheme ? 'dark' : 'light';
+        this.setTheme();
+        this.setIcon();
+    }
+
+    setIcon() {
+        this.themeIcon = this.isDarkTheme ? 'light_mode' : 'dark_mode';
+    }
+
+    setTheme() {
+        localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
+    }
+
+    getTheme(): string {
+        return localStorage.getItem('theme') || 'dark'
     }
 
 }

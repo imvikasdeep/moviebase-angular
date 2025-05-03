@@ -4,7 +4,9 @@
         <section class="poster" style="background-image: url('{{movie.backdrop_path}}');"></section>
         <section class="content">
             <div class="play">
-                <a href="#"><i class="material-icons-outlined">play_circle_outline</i></a>
+                @if(video) {
+                    <a [href]="video" target="_blank"><i class="material-icons-outlined">play_circle_outline</i></a>
+                }
             </div>
             <div class="heading">
                 <h1>{{movie.original_title}}</h1>

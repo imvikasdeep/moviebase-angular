@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
-import { IGenre, IMovieDetail, IMovieList } from '../interfaces/movie.model';
+import { IGenre, IMovieDetail, IMovieList, IMovieVideos } from '../interfaces/movie.model';
 import { DatePipe } from '@angular/common';
 import { IPerson } from '../interfaces/cast.model';
 
@@ -82,6 +82,10 @@ export class MoviesService {
 
             return response
         }), retry(2), catchError(this.handleError))
+    }
+
+    getMovieVideos(id: number): Observable<IMovieVideos> {
+        return this.http.get<IMovieVideos>(`${this.API_URL}movie/${id}/videos?language=en-US`).pipe(retry(2), catchError(this.handleError))
     }
 
     getSimilarMovies(id: number): Observable<IMovieList> {
