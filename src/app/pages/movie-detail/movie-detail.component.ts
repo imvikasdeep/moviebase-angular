@@ -39,16 +39,14 @@ export class MovieDetailComponent {
             this._movieService.getMovieDetails(this.movieId).subscribe(res => {
                 this.movie = res;
 
-                // if(this.movie.video) {
-                    this._movieService.getMovieVideos(this.movieId).subscribe({
-                        next: res => {
-                            let trailer = res.results.find(v=> v.type == 'Trailer');
-                            if(trailer) {
-                                this.video = `https://www.youtube.com/watch?v=${trailer.key}`
-                            }
+                this._movieService.getMovieVideos(this.movieId).subscribe({
+                    next: res => {
+                        let trailer = res.results.find(v => v.type == 'Trailer');
+                        if (trailer) {
+                            this.video = `https://www.youtube.com/watch?v=${trailer.key}`
                         }
-                    })
-                // }
+                    }
+                })
             })
 
             this._movieService.getSimilarMovies(this.movieId).subscribe(res => {
