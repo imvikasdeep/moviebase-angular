@@ -12,10 +12,10 @@ import { RouterLink } from '@angular/router';
 })
 export class MovieCardComponent {
 
-	@HostBinding('class') class = 'card';
+    @HostBinding('class') class = 'card';
 
 
-	@Input('movie') movie !: IMovie
+    @Input('movie') movie !: IMovie
 
-	
+
 }

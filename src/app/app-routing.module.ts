@@ -11,26 +11,26 @@ import { TrendingComponent } from './pages/trending/trending.component';
 import { UpcomingComponent } from './pages/upcoming/upcoming.component';
 
 const routes: Routes = [
-    
-    {path: 'movie/:id', component: MovieDetailComponent},
-    
-    {path: 'person/:id', component: PersonDetailComponent},
 
-    {path: 'genre/:id/:slug', component: GenreComponent},
-    
-    {path: 'search/:query', component: SearchResultComponent},
+    { path: 'movie/:id', component: MovieDetailComponent },
 
-	{ path: 'trending', component: TrendingComponent },
-	{ path: 'top-rated', component: TopRatedComponent },
-	{ path: 'upcoming', component: UpcomingComponent },
-	
-	{ path: '', component: HomeComponent },
-	{ path: '**', component:NotFoundComponent  }
+    { path: 'person/:id', component: PersonDetailComponent },
+
+    { path: 'genre/:id/:slug', component: GenreComponent },
+
+    { path: 'search/:query', component: SearchResultComponent },
+
+    { path: 'trending', component: TrendingComponent },
+    { path: 'top-rated', component: TopRatedComponent },
+    { path: 'upcoming', component: UpcomingComponent },
+
+    { path: '', component: HomeComponent },
+    { path: '**', component: NotFoundComponent }
 
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
-	exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

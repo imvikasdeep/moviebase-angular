@@ -21,6 +21,7 @@
     text-align: center;
     border-radius: 4px;
     text-transform: uppercase;
+    cursor: pointer;
     @include transition;
 
     &:hover {

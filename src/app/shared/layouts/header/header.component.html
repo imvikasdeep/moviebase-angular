@@ -31,6 +31,10 @@
 
                 <app-search-form></app-search-form>
 
+                <div class="theme-setting" (click)="toggleTheme()">
+                    <i [title]="'Switch to '+themeIcon.replace('_', ' ')" class="material-icons-outlined">{{themeIcon}}</i>
+                </div>
+
             </nav>
 
         </div>

@@ -3,8 +3,8 @@ import { IMovie } from 'src/app/interfaces/movie.model';
 import { MoviesService } from 'src/app/services/movies.service';
 import { ContainerWrapperComponent } from '../../components/container-wrapper/container-wrapper.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
-
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-top-rated',
@@ -13,23 +13,39 @@ import { MovieCardComponent } from '../../components/movie-card/movie-card.compo
     imports: [ContainerWrapperComponent, HeadingComponent, MovieCardComponent]
 })
 export class TopRatedComponent {
-  movieList!: IMovie[];
 
-	params = {
-		page: 1
-	}
+    movieList!: IMovie[];
 
-	constructor(
-		private _movieService: MoviesService
-	) { }
+    params = {
+        page: 1
+    }
 
-	ngOnInit(): void {
+    constructor(
+        private _movieService: MoviesService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) { }
 
-		this._movieService.getMovies('top-rated', this.params).subscribe(res => {
+    ngOnInit(): void {
 
-			this.movieList = res.results
+        this.route.queryParams.subscribe(params => {
+            this.params.page = parseInt(params['page'] || '1', 10);
+            this._movieService.getMovies('top-rated', this.params).subscribe(res => {
+                this.movieList = res.results
+            })
+        })
 
-		})
 
-	}
+    }
+
+    updateParam(page: number) {
+
+        if (page < 1) return;
+
+        this.params.page = page;
+        this.router.navigate([], {
+            relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge'
+        });
+    }
+
 }
