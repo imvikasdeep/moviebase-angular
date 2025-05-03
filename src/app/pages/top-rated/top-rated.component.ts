@@ -10,7 +10,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
     selector: 'app-top-rated',
     templateUrl: './top-rated.component.html',
     styleUrls: ['./top-rated.component.scss'],
-    imports: [ContainerWrapperComponent, HeadingComponent, MovieCardComponent, RouterLink]
+    imports: [ContainerWrapperComponent, HeadingComponent, MovieCardComponent]
 })
 export class TopRatedComponent {
 
