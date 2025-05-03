@@ -14,27 +14,27 @@
     flex-grow: 1;
     margin-top: 30px;
     overflow: hidden;
-    // width: math.div($max-width, 6);
-    // max-width: math.div($max-width, 5);
+    width: math.div($max-width, 6);
+    max-width: math.div($max-width, 5);
     margin-left: 10px;
     margin-right: 10px;
     @include transition;
 
-    // @include xl {
-    //     width: math.div($max-width, 7);
-    // }
+    @include xl {
+        width: math.div($max-width, 7);
+    }
     
-    // @include lg {
-    //     width: math.div($max-width, 6);
-    // }
+    @include lg {
+        width: math.div($max-width, 6);
+    }
 
-    // @include sm {
-    //     width: math.div($max-width, 7);
-    // }
+    @include sm {
+        width: math.div($max-width, 7);
+    }
 
-    // @include max-width(403) {
-    //     width: math.div($max-width, 10);
-    // }
+    @include max-width(403) {
+        width: math.div($max-width, 10);
+    }
 
     .card__rating {
         position: absolute;

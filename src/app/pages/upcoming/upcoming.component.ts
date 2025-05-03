@@ -5,6 +5,7 @@ import { ContainerWrapperComponent } from '../../components/container-wrapper/co
 import { HeadingComponent } from '../../components/heading/heading.component';
 
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-upcoming',
@@ -21,16 +22,30 @@ export class UpcomingComponent {
 	}
 
 	constructor(
-		private _movieService: MoviesService
-	) { }
-
-	ngOnInit(): void {
-
-		this._movieService.getMovies('upcoming', this.params).subscribe(res => {
-
-			this.movieList = res.results
-
-		})
-
-	}
+            private _movieService: MoviesService,
+            private router: Router,
+            private route: ActivatedRoute
+        ) { }
+    
+        ngOnInit(): void {
+    
+            this.route.queryParams.subscribe(params => {
+                this.params.page = parseInt(params['page'] || '1', 10);
+                this._movieService.getMovies('upcoming', this.params).subscribe(res => {
+                    this.movieList = res.results
+                })
+            })
+    
+    
+        }
+    
+        updateParam(page: number) {
+    
+            if (page < 1) return;
+    
+            this.params.page = page;
+            this.router.navigate([], {
+                relativeTo: this.route, queryParams: { page: page }, queryParamsHandling: 'merge'
+            });
+        }
 }
