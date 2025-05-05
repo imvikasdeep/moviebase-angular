@@ -34,8 +34,6 @@ export class TopRatedComponent {
                 this.movieList = res.results
             })
         })
-
-
     }
 
     updateParam(page: number) {
