@@ -39,18 +39,17 @@
 
 /// Custom devices
 @mixin rwd($screen) {
-    @media (min-width: $screen+'px') {
+    @media (min-width: #{$screen}px) {
         @content;
     }
 }
 
 /// custom Max width
 @mixin max-width($screen) {
-    @media (max-width: $screen+'px') {
+    @media (max-width: #{$screen}px) {
         @content;
     }
 }
-
 
 
 
@@ -62,13 +61,17 @@
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
     @if $self {
+
         &,
         &:hover,
         &:active,
         &:focus {
             @content;
         }
-    } @else {
+    }
+
+    @else {
+
         &:hover,
         &:active,
         &:focus {
